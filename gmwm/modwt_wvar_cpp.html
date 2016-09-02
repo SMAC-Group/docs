@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>modwt_wvar_cpp. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>modwt_wvar_cpp. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Computes the (MODWT) wavelet variance</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='modwt_wvar_cpp.html'>modwt_wvar_cpp</a></span><span class="keyword">(</span><span class="symbol">signal</span><span class="keyword">,</span> <span class="symbol">nlevels</span><span class="keyword">,</span> <span class="symbol">robust</span><span class="keyword">,</span> <span class="symbol">eff</span><span class="keyword">,</span> <span class="symbol">alpha</span><span class="keyword">,</span> <span class="symbol">ci_type</span><span class="keyword">,</span> <span class="symbol">strWavelet</span><span class="keyword">,</span> <span class="symbol">decomp</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>signal</dt>
+      <dd>A <code>vec</code> that contains the data.</dd>
+      <dt>robust</dt>
+      <dd>A <code>boolean</code> that triggers the use of the robust estimate.</dd>
+      <dt>eff</dt>
+      <dd>A <code>double</code> that indicates the efficiency as it relates to an MLE.</dd>
+      <dt>alpha</dt>
+      <dd>A <code>double</code> that indicates the $(1-p)*alpha$ confidence level</dd>
+      <dt>ci_type</dt>
+      <dd>A <code>string</code> indicating the confidence interval being calculated. Valid value: &quot;eta3&quot;</dd>
+      <dt>strWavelet</dt>
+      <dd>A <code>string</code> indicating the type of wave filter to be applied. Must be &quot;haar&quot;</dd>
+      <dt>decomp</dt>
+      <dd>A <code>string</code> indicating whether to use &quot;modwt&quot; or &quot;dwt&quot; decomp</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>mat</code> with the structure:
+<ul>
+<li>&quot;variance&quot;Wavelet Variance
+  </li>
+<li>&quot;low&quot;Lower CI
+  </li>
+<li>&quot;high&quot;Upper CI
+</li>
+</ul></p>
+
+      <p></dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Calculates the (MODWT) wavelet variance</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>This function powers the wvar object. It is also extendable...</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">x</span><span class="assignement">=</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/stats/topics/Normal'>rnorm</a></span><span class="keyword">(</span><span class="number">100</span><span class="keyword">)</span>
+<span class="functioncall"><a href='modwt_wvar_cpp.html'>modwt_wvar_cpp</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">nlevels</span><span class="argument">=</span><span class="number">4</span><span class="keyword">,</span> <span class="argument">robust</span><span class="argument">=</span><span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">eff</span><span class="argument">=</span><span class="number">0.6</span><span class="keyword">,</span> <span class="argument">alpha</span> <span class="argument">=</span> <span class="number">0.05</span><span class="keyword">,</span>
+               <span class="argument">ci_type</span><span class="argument">=</span><span class="string">"eta3"</span><span class="keyword">,</span> <span class="argument">strWavelet</span><span class="argument">=</span><span class="string">"haar"</span><span class="keyword">,</span> <span class="argument">decomp</span><span class="argument">=</span><span class="string">"modwt"</span><span class="keyword">)</span></div>
+<div class='output'>           [,1]       [,2]      [,3]
+[1,] 0.40406604 0.28241781 0.6259024
+[2,] 0.18231825 0.11140713 0.3514412
+[3,] 0.10522052 0.05363067 0.2925466
+[4,] 0.03471457 0.01382005 0.1936265
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>modwt_wvar_cpp</li>
+    </ul>
+    <ul>
+      <li>internal</li>
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

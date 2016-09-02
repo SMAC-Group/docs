@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>optimism_bootstrapper. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+JJB
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>optimism_bootstrapper. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+JJB
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Bootstrap for Optimism</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='optimism_bootstrapper.html'>optimism_bootstrapper</a></span><span class="keyword">(</span><span class="symbol">theta</span><span class="keyword">,</span> <span class="symbol">desc</span><span class="keyword">,</span> <span class="symbol">objdesc</span><span class="keyword">,</span> <span class="symbol">scales</span><span class="keyword">,</span> <span class="symbol">model_type</span><span class="keyword">,</span> <span class="symbol">N</span><span class="keyword">,</span> <span class="symbol">robust</span><span class="keyword">,</span> <span class="symbol">eff</span><span class="keyword">,</span>
+  <span class="symbol">alpha</span><span class="keyword">,</span> <span class="symbol">H</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>theta</dt>
+      <dd>A <code>vector</code> with dimensions N x 1 that contains user-supplied initial values for parameters</dd>
+      <dt>desc</dt>
+      <dd>A <code>vector&lt;string&gt;</code> indicating the models that should be considered.</dd>
+      <dt>objdesc</dt>
+      <dd>A <code>field&lt;vec&gt;</code> that contains an object description (e.g. values) of the model.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>vec</code> that contains the parameter estimates from GMWM estimator.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Using the bootstrap approach, we simulate a model based on user supplied parameters, obtain the wavelet variance, and then V.</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>Expand in detail...</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment"># Coming soon</span></div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>optimism_bootstrapper</li>
+    </ul>
+    <ul>
+      <li>internal</li>
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+JJB
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

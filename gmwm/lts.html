@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>lts. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Wenchao
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>lts. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Wenchao
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Generate Latent Time Series Object Based on Data</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='lts.html'>lts</a></span><span class="keyword">(</span><span class="symbol">data</span><span class="keyword">,</span> <span class="argument">start</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0</span><span class="keyword">,</span> <span class="argument">end</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">freq</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1</span><span class="keyword">,</span> <span class="argument">unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">name</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">process</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>data</dt>
+      <dd>A multiple-column <code>matrix</code> or <code>data.frame</code>. It must contain at least 2 columns. The last column must equal to the sum of all previous columns.</dd>
+      <dt>start</dt>
+      <dd>A <code>numeric</code> that provides the time of the first observation.</dd>
+      <dt>end</dt>
+      <dd>A <code>numeric</code> that provides the time of the last observation.</dd>
+      <dt>freq</dt>
+      <dd>A <code>numeric</code> that provides the rate of samples. Default value is 1.</dd>
+      <dt>unit</dt>
+      <dd>A <code>string</code> that contains the unit expression of the frequency. Default value is <code>NULL</code>.</dd>
+      <dt>name</dt>
+      <dd>A <code>string</code> that provides an identifier to the data. Default value is <code>NULL</code>.</dd>
+      <dt>process</dt>
+      <dd>A <code>vector</code> that contains model names of decomposed and combined processes.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>lts</code> object with the following attributes:
+<dl>
+  <dt>start</dt><dd>The time of the first observation</dd></p>
+
+      <p><dt>end</dt><dd>The time of the last observation</dd></p>
+
+      <p><dt>freq</dt><dd>Numeric representation of frequency</dd></p>
+
+      <p><dt>unit</dt><dd>String representation of the unit</dd></p>
+
+      <p><dt>name</dt><dd>Name of the dataset</dd></p>
+
+      <p><dt>process</dt><dd>A <code>vector</code> that contains model names of decomposed and combined processes</dd></p>
+
+      <p></dl></p>
+
+      <p></dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Create a <code>lts</code> object based on a supplied matrix or data frame.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">model1</span> <span class="assignement">=</span> <span class="functioncall"><a href='AR1.html'>AR1</a></span><span class="keyword">(</span><span class="argument">phi</span> <span class="argument">=</span> <span class="number">.99</span><span class="keyword">,</span> <span class="argument">sigma</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">)</span>
+<span class="symbol">model2</span> <span class="assignement">=</span> <span class="functioncall"><a href='WN.html'>WN</a></span><span class="keyword">(</span><span class="argument">sigma2</span><span class="argument">=</span><span class="number">1</span><span class="keyword">)</span>
+<span class="symbol">col1</span> <span class="assignement">=</span> <span class="functioncall"><a href='gen.gts.html'>gen.gts</a></span><span class="keyword">(</span><span class="symbol">model1</span><span class="keyword">,</span> <span class="argument">N</span> <span class="argument">=</span> <span class="number">1000</span><span class="keyword">)</span>
+<span class="symbol">col2</span> <span class="assignement">=</span> <span class="functioncall"><a href='gen.gts.html'>gen.gts</a></span><span class="keyword">(</span><span class="symbol">model2</span><span class="keyword">,</span> <span class="argument">N</span> <span class="argument">=</span> <span class="number">1000</span><span class="keyword">)</span>
+<span class="symbol">testMat</span> <span class="assignement">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span><span class="keyword">(</span><span class="symbol">col1</span><span class="keyword">,</span> <span class="symbol">col2</span><span class="keyword">,</span> <span class="symbol">col1</span><span class="keyword">+</span><span class="symbol">col2</span><span class="keyword">)</span>
+<span class="symbol">testLts</span> <span class="assignement">=</span> <span class="functioncall"><a href='lts.html'>lts</a></span><span class="keyword">(</span><span class="symbol">testMat</span><span class="keyword">,</span> <span class="argument">unit</span> <span class="argument">=</span> <span class="string">'sec'</span><span class="keyword">,</span> <span class="argument">process</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">'AR1'</span><span class="keyword">,</span> <span class="string">'WN'</span><span class="keyword">,</span> <span class="string">'AR1+WN'</span><span class="keyword">)</span><span class="keyword">)</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span><span class="keyword">(</span><span class="symbol">testLts</span><span class="keyword">)</span></div>
+<p><img src='lts-2.png' alt='' width='540' height='400' /></p></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>lts</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+Wenchao
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

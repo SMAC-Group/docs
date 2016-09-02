@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>rank_models. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>rank_models. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Find the Rank Models result</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='rank_models.html'>rank_models</a></span><span class="keyword">(</span><span class="symbol">data</span><span class="keyword">,</span> <span class="symbol">model_str</span><span class="keyword">,</span> <span class="symbol">full_model</span><span class="keyword">,</span> <span class="symbol">alpha</span><span class="keyword">,</span> <span class="symbol">compute_v</span><span class="keyword">,</span> <span class="symbol">model_type</span><span class="keyword">,</span> <span class="symbol">K</span><span class="keyword">,</span> <span class="symbol">H</span><span class="keyword">,</span> <span class="symbol">G</span><span class="keyword">,</span>
+  <span class="symbol">robust</span><span class="keyword">,</span> <span class="symbol">eff</span><span class="keyword">,</span> <span class="symbol">bs_optimism</span><span class="keyword">,</span> <span class="symbol">seed</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>data</dt>
+      <dd>A <code>vec</code> of data.</dd>
+      <dt>model_str</dt>
+      <dd>A <code>vector&lt;vector&lt;string&gt;&gt;</code> that gives a list of models to test.</dd>
+      <dt>full_model</dt>
+      <dd>A <code>vector&lt;string&gt;</code> that contains the largest / full model.</dd>
+      <dt>alpha</dt>
+      <dd>A <code>double</code> that indicates the alpha level for CIs.</dd>
+      <dt>compute_v</dt>
+      <dd>A <code>string</code> indicating the type of V matrix to generate</dd>
+      <dt>model_type</dt>
+      <dd>A <code>string</code> that describes the model generation / transformation: &#39;ssm&#39; or &#39;imu&#39;</dd>
+      <dt>K</dt>
+      <dd>A <code>int</code> that controls how many times the GMWM is run.</dd>
+      <dt>H</dt>
+      <dd>A <code>int</code> that controls how many bootstraps occur.</dd>
+      <dt>G</dt>
+      <dd>A <code>int</code> that controls how many guesses occur.</dd>
+      <dt>robust</dt>
+      <dd>A <code>bool</code> that indicates whether to use classical or robust wavelet variance.</dd>
+      <dt>eff</dt>
+      <dd>A <code>double</code> that indicates the efficiency to use.</dd>
+      <dt>bs_optimism</dt>
+      <dd>A <code>bool</code> that indicates whether the model selection score should be calculated with bootstrap or asymptotics.</dd>
+      <dt>seed</dt>
+      <dd>A <code>unsigned int</code> that is the seed one wishes to use.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>field&lt;field&lt;field&lt;mat&gt;&gt;&gt;</code> that contains the model score matrix and the best GMWM model object.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Provides the core material to create an S3 object for rank.models</p>
+
+    </div>
+      </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>rank_models</li>
+    </ul>
+    <ul>
+      <li>internal</li>
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

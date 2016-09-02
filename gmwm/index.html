@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Home. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>Home. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <div class="row">
+  <div class="span8">
+    <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<p><a href="https://travis-ci.org/SMAC-Group/gmwm"><img src="https://travis-ci.org/SMAC-Group/gmwm.svg?branch=master" alt="Linux Build Status"/></a><a href="http://www.r-pkg.org/pkg/gmwm"><img src="http://cranlogs.r-pkg.org/badges/gmwm" alt="CRAN RStudio mirror downloads"/></a><a href="http://cran.r-project.org/package=gmwm"><img src="http://www.r-pkg.org/badges/version/gmwm" alt="CRAN\_Status\_Badge"/></a></p>
+
+<h1><code>gmwm</code> R Package</h1>
+
+<p>This repository holds the Generalized Method of Wavelet Moments (GMWM) R package. This estimation technique uses the wavelet variance in a moment-matching spirit to estimate parameters of time series models such as ARMA or state-space models. A robust version of the GMWM is also implemented in this package together with a tailored made method for inertial sensors calibration, which typically deals with very large sample sizes.</p>
+
+<p>Below are examples of the capabilities of the <code>gmwm</code> package.</p>
+
+<p>To start, let&#39;s generate some data:</p>
+
+<pre><code class="r">## Data generation ##
+# Specify model
+m = AR1(phi = .98, sigma2 = .01) + WN(sigma2 = 1)
+
+# Generate Data
+d = gen.gts(m, 10000)
+</code></pre>
+
+<p>Once we have data, we can see what the wavelet variance looks like for the data with the classical and robust wavelet variances.</p>
+
+<pre><code class="r"># Calculate the classical wavelet variance with the Haar filter
+wv.classical = wvar(d)
+
+# Plot the data
+plot(wv.classical)
+
+# Calculate robust wavelet variance
+wv.robust = wvar(d, robust = TRUE, eff = 0.6)
+
+# Compare both versions
+compare.wvar(wv.classical, wv.robust)
+</code></pre>
+
+<p>Now, let&#39;s try to estimate it with specific (e.g. user supplied) and guessed (e.g. program generated) parameters.</p>
+
+<pre><code class="r">## Estimation Modes ##
+
+# Use a specific initial starting value
+o.specific = gmwm.imu(AR1(phi=.98,sigma2=.05) + WN(sigma2=.95), data = d)
+
+# Let the program guess a good starting value
+o.guess = gmwm.imu(AR1()+WN(), data = d)
+</code></pre>
+
+<p>To run inference or view the parameter estimates, we do:</p>
+
+<pre><code class="r">## View Model Info ##
+
+# Standard summary
+summary(o.specific)
+
+# View with asymptotic inference
+summary(o.specific, inference = T)
+
+# View with bootstrapped inference
+summary(o.specific, inference = T, bs.gof = T)
+</code></pre>
+
+<p>Alternatively, we can let the program try to figure out the best model for the data using the Wavelet Information Criteria (WIC):</p>
+
+<pre><code class="r">## Model selection ##
+
+# Separate Models - Compares 2*AR1() and AR1() + WN() under common model 2*AR1() + WN()
+# Note: This function created a shared model (e.g. 2*AR1() + WN()) if not supplied to obtain the WIC. 
+ms.sep = rank.models(AR1()+WN(), 2*AR1(), data = d, model.type=&quot;imu&quot;)
+
+# Nested version - Compares AR1() + WN(), AR1(), WN()
+ms.nested = rank.models(AR1()+WN(), data = d, nested = TRUE, model.type = &quot;imu&quot;)
+
+# Bootstrapped Optimism
+ms.bs = rank.models(AR1()+WN(), WN(), data = d, bootstrap = TRUE, model.type = &quot;imu&quot;)
+
+# See automatic selection fit
+plot(ms.sep)
+
+# View model picked:
+summary(ms.sep)
+</code></pre>
+
+<p>Last, but certainly not least, we can also approximate a contaminated sample with robust methodology:</p>
+
+<pre><code class="r">## Data generation ##
+# Specify model
+model = AR1(phi = .99, sigma2 = .01) + WN(sigma2 = 1)
+
+# Generate Data
+set.seed(213)
+N = 1e3
+sim.ts = gen.gts(model, N)
+
+# Contaminate Data
+cont.eps = 0.01
+cont.num = sample(1:N,round(N*cont.eps))
+sim.ts[cont.num,] = sim.ts[cont.num,] + rnorm(round(N*cont.eps),0,sqrt(100))
+
+# Plot the data
+plot(sim.ts)
+
+# Classical Wavelet Variance
+wv.classic = wvar(sim.ts)
+
+# Robust Wavelet Variance
+wv.robust = wvar(sim.ts, robust = TRUE, eff = 0.6)
+
+# Plot the Classical vs. Robust WV
+compare.wvar(wv.classic, wv.robust, split = FALSE)
+
+# Run robust estimation
+o = gmwm.imu(model, sim.ts, robust = TRUE, eff = 0.6)
+
+# Robust information
+summary(o)
+</code></pre>
+
+<h1>Install Instructions</h1>
+
+<p>To install the <code>gmwm</code> package, there are three options: CRAN (Stable), GitHub (Developmental), or SMAC (stable - offline).</p>
+
+<h2>Recommended R Interface</h2>
+
+<p>We firmly recommend that any users of this package use the <a href="https://www.rstudio.com/products/rstudio/download/">RStudio IDE</a> over the default R GUI.</p>
+
+<h2>Installing the package through CRAN (Stable)</h2>
+
+<p>The installation process with CRAN is the simplest</p>
+
+<pre><code class="r">install.packages(&quot;gmwm&quot;)
+</code></pre>
+
+<p>Installing the package this way gives you access to stable features. Furthermore, the installation itself does not require a compiler or preinstalling any dependencies. However, we are limited to updating the package on CRAN to once every month. Thus, there may be some lag between when features are developed and when they are available on this version.</p>
+
+<h2>Installing the package through GitHub (Developmental)</h2>
+
+<p>For users who are interested in having the latest and greatest developments withing wavelets or GMWM methodology, this option is ideal. Though, there is considerably more work that a user must do to have a stable version of the package. <strong>The setup to obtain the development version is platform dependent.</strong></p>
+
+<p>Specifically, one <strong>must</strong> have a compiler installed on your system that is compatible with R.</p>
+
+<p>For help on obtaining a compiler consult:</p>
+
+<ul>
+<li>  <a href="http://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-os-x/">OS X</a></li>
+<li>  <a href="https://cran.r-project.org/bin/windows/Rtools/">Windows</a></li>
+</ul>
+
+<p>Depending on your operating system, further requirements exist such as:</p>
+
+<p><strong>OS X</strong></p>
+
+<p>Some user report the need to use X11 to suppress shared library errors. To install X11, visit <a href="http://www.xquartz.org/">xquartz.org</a></p>
+
+<p><strong>Linux</strong></p>
+
+<p>Both curl and libxml are required.</p>
+
+<p>For <strong>Debian</strong> systems, enter the following in terminal:</p>
+
+<pre><code class="bash">sudo apt-get install curl libcurl3 libcurl3-dev libxml2 libxml2-dev
+</code></pre>
+
+<p>For <strong>RHEL</strong> systems, enter the following in terminal:</p>
+
+<pre><code class="bash">sudo yum install curl curl-devel libxml2 libxml2-dev
+</code></pre>
+
+<p><strong>All Systems</strong></p>
+
+<p>With the system dependency taken care of, we continue on by installing the R specific package dependencies and finally the package itself by doing the following in an R session:</p>
+
+<pre><code class="r"># Install dependencies
+install.packages(c(&quot;RcppArmadillo&quot;,&quot;ggplot2&quot;,&quot;reshape2&quot;,&quot;devtools&quot;,&quot;knitr&quot;,&quot;rmarkdown&quot;))
+
+# Install the package from GitHub without Vignettes/User Guides
+devtools::install_github(&quot;SMAC-Group/gmwm&quot;)
+
+# Install the package from GitHub with Vignettes/User Guides
+# Note: This will be a longer install as the vignettes must be built.
+devtools::install_github(&quot;SMAC-Group/gmwm&quot;, build_vignettes = TRUE)
+</code></pre>
+
+<h2>Installing the package from SMAC-Group.com (Stable - offline)</h2>
+
+<p>Lastly, we will be offering a source .tar that is able to be install offline - after being downloaded - on the <a href="http://www.smac-group.com">smac-group.com</a> website.</p>
+
+<pre><code class="r"># Install the dependencies
+install.packages(c(&quot;RcppArmadillo&quot;,&quot;ggplot2&quot;,&quot;scales&quot;,&quot;devtools&quot;,&quot;knitr&quot;,&quot;rmarkdown&quot;))
+
+# Local installation
+setwd(&quot;path_to_file_GMWM_2.0.0.tar.gz&quot;)
+install.packages(&quot;GMWM&quot;, repos = NULL, type=&quot;source&quot;)
+</code></pre>
+
+<h2>Supplementary data package</h2>
+
+<p>To test the package performance on real-world data that is <em>stationary</em> or work with some of the examples, you will need to download and install the <code>imudata</code> and/or the <code>datapkg</code> R package.</p>
+
+<p>To do so, please use the following installation method within the <code>gmwm</code> R package:</p>
+
+<pre><code class="r"># Install the imudata package containing real world IMU data sets
+gmwm::install_imudata()
+
+# Install the datapkg package containing miscellaneous data sets
+gmwm::install_datapkg()
+</code></pre>
+
+<p>For more information about the <code>imudata</code> and <code>datapkg</code> package, see the <a href="https://github.com/SMAC-Group/imudata">https://github.com/SMAC-Group/imudata</a> and <a href="https://github.com/SMAC-Group/datapkg">https://github.com/SMAC-Group/datapkg</a>.</p>
+
+<h1>User Guides</h1>
+
+<p>Various guides ship with package or are available on <a href="http://smac-group.com/">http://smac-group.com/</a> to provide insight into how to use the different methods. At the present time, the following vignettes are available:</p>
+
+<ol>
+<li> Process to Haar Wavelet Variance [(Online)](smac-group.com/computing/process-to-haar-wavelet-variance-formulae)</li>
+</ol>
+
+<h1>Licensing</h1>
+
+<p>The license this source code is released under is the Creative Commons Attribution NonCommercial ShareAlike (CC-NC-SA). In some cases, the GPL license does apply. However, in the majority of the cases, the license in effect is the Creative Commons Attribution NonCommercial ShareAlike (CC-NC-SA) as the computational code is heavily dependent on armadilllo, which has an MIT license that enables us to recast our code to the Creative Commons Attribution NonCommercial ShareAlike (CC-NC-SA). See the LICENSE file for full text. Otherwise, please consult <a href="https://tldrlegal.com/license/creative-commons-attribution-noncommercial-sharealike-(cc-nc-sa">TLDR Legal</a>) or <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/#">CC</a> which will provide a synopsis of the restrictions placed upon the data and code. Please note, this does NOT excuse you from talking about licensing with a lawyer!</p>
+
+  </div>
+
+  <div class="span3 offset1 sidebar">
+    <h2>Vignettes</h2>
+    <ul>
+      <li><a href="vignettes/Loading-and-Modeling-IMUs.html">IMU Objects in the GMWM R Package</a></li>
+      <li><a href="vignettes/Manipulating-gmwm-Object-Types.html">Manipulating Objects in gmwm</a></li>
+      <li><a href="vignettes/Process-to-Haar-Wavelet-Variance-Formulae.html">Process to Haar Wavelet Variance Formulae</a></li>
+      <li><a href="vignettes/Quick-Start-Guide.html">Quick Start Guide for the GMWM R Package</a></li>
+    </ul>
+        <h2>Authors</h2>
+    <ul>
+      <li><a href='mailto:james.balamuta@gmail.com'>James Balamuta</a> [aut, cph]</li>
+      <li><a href='mailto:stephane@illinois.edu'>Stephane Guerrier</a> [ctb, cre, cph]</li>
+      <li><a href='mailto:roberto.molinari@unige.ch'>Roberto Molinari</a> [ctb, cph]</li>
+      <li><a href='mailto:wyang40@illinois.edu'>Wenchao Yang</a> [ctb]</li>
+    </ul>
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

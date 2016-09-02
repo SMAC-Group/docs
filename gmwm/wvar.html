@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>wvar. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+JJB
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>wvar. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+JJB
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Wavelet Variance</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span>
+
+<span class="comment"># S3 method for lts</span>
+<span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">decomp</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"modwt"</span><span class="keyword">,</span> <span class="argument">filter</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"haar"</span><span class="keyword">,</span> <span class="argument">nlevels</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">alpha</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.05</span><span class="keyword">,</span> <span class="argument">robust</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">eff</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.6</span><span class="keyword">,</span> <span class="argument">to.unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span>
+
+<span class="comment"># S3 method for gts</span>
+<span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">decomp</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"modwt"</span><span class="keyword">,</span> <span class="argument">filter</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"haar"</span><span class="keyword">,</span> <span class="argument">nlevels</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">alpha</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.05</span><span class="keyword">,</span> <span class="argument">robust</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">eff</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.6</span><span class="keyword">,</span> <span class="argument">to.unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span>
+
+<span class="comment"># S3 method for ts</span>
+<span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">decomp</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"modwt"</span><span class="keyword">,</span> <span class="argument">filter</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"haar"</span><span class="keyword">,</span> <span class="argument">nlevels</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">alpha</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.05</span><span class="keyword">,</span> <span class="argument">robust</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">eff</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.6</span><span class="keyword">,</span> <span class="argument">to.unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span>
+
+<span class="comment"># S3 method for default</span>
+<span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">decomp</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"modwt"</span><span class="keyword">,</span> <span class="argument">filter</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"haar"</span><span class="keyword">,</span>
+  <span class="argument">nlevels</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">alpha</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.05</span><span class="keyword">,</span> <span class="argument">robust</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">eff</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.6</span><span class="keyword">,</span> <span class="argument">freq</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1</span><span class="keyword">,</span>
+  <span class="argument">from.unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">to.unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span>
+
+<span class="comment"># S3 method for imu</span>
+<span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">decomp</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"modwt"</span><span class="keyword">,</span> <span class="argument">filter</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"haar"</span><span class="keyword">,</span> <span class="argument">nlevels</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">alpha</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.05</span><span class="keyword">,</span> <span class="argument">robust</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">F</span><span class="keyword">,</span> <span class="argument">eff</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.6</span><span class="keyword">,</span> <span class="argument">to.unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>A <code>vector</code> with dimensions N x 1, or a <code>lts</code> object, or a <code>gts</code> object, or a <code>imu</code> object.</dd>
+      <dt>...</dt>
+      <dd>Further arguments passed to or from other methods.</dd>
+      <dt>decomp</dt>
+      <dd>A <code>string</code> that indicates whether to use the &quot;dwt&quot; or &quot;modwt&quot; decomposition.</dd>
+      <dt>filter</dt>
+      <dd>A <code>string</code> that specifies what wavelet filter to use.</dd>
+      <dt>nlevels</dt>
+      <dd>An <code>integer</code> that indicates the level of decomposition. It must be less than or equal to floor(log2(length(x))).</dd>
+      <dt>alpha</dt>
+      <dd>A <code>double</code> that indicates the $(1-p)*alpha$ confidence level</dd>
+      <dt>robust</dt>
+      <dd>A <code>boolean</code> that triggers the use of the robust estimate.</dd>
+      <dt>eff</dt>
+      <dd>A <code>double</code> that indicates the efficiency as it relates to an MLE.</dd>
+      <dt>to.unit</dt>
+      <dd>A <code>string</code> indicating the unit which the data is converted to.</dd>
+      <dt>freq</dt>
+      <dd>A <code>numeric</code> that provides the rate of samples.</dd>
+      <dt>from.unit</dt>
+      <dd>A <code>string</code> indicating the unit which the data is converted from.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>list</code> with the structure:
+<dl>
+  <dt>&quot;variance&quot;</dt><dd>Wavelet Variance</dd></p>
+
+      <p><dt>&quot;ci_low&quot;</dt><dd>Lower CI</dd></p>
+
+      <p><dt>&quot;ci_high&quot;</dt><dd>Upper CI</dd></p>
+
+      <p><dt>&quot;robust&quot;</dt><dd>Robust active</dd></p>
+
+      <p><dt>&quot;eff&quot;</dt><dd>Efficiency level for Robust</dd></p>
+
+      <p><dt>&quot;alpha&quot;</dt><dd>p value used for CI</dd></p>
+
+      <p><dt>&quot;unit&quot;</dt><dd>String representation of the unit</dd></p>
+
+      <p></dl></p>
+
+      <p></dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Calculates the (MODWT) wavelet variance</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>If `nlevels` is not specified, it is set to floor(log2(length(x)))</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span><span class="keyword">(</span><span class="number">999</span><span class="keyword">)</span>
+<span class="symbol">x</span> <span class="assignement">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/stats/topics/Normal'>rnorm</a></span><span class="keyword">(</span><span class="number">100</span><span class="keyword">)</span>
+<span class="comment"># Default</span>
+<span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span></div>
+<div class='output'>      Variance      Low CI   High CI
+2  0.452177820 0.316045047 0.7004281
+4  0.230339706 0.140751059 0.4440086
+8  0.137102522 0.069880858 0.3811887
+16 0.051603837 0.020543745 0.2878292
+32 0.011723825 0.003282007 0.3685303
+64 0.008205545 0.001633306 8.3553640
+</div>
+<div class='input'><span class="comment"># Robust</span>
+<span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">robust</span> <span class="argument">=</span> <span class="number">TRUE</span><span class="keyword">,</span> <span class="argument">eff</span><span class="argument">=</span><span class="number">0.3</span><span class="keyword">)</span></div>
+<div class='output'>      Variance      Low CI    High CI
+2  0.549798331 0.247597104  1.1008892
+4  0.239938797 0.069556677  0.6463001
+8  0.131799310 0.013817156  0.5602001
+16 0.061956782 0.013817156  0.5797696
+32 0.007484506 0.003742253  0.4233625
+64 0.009967258 0.003742253 18.5216674
+</div>
+<div class='input'><span class="comment"># 90% confidence interval</span>
+<span class="functioncall"><a href='wvar.html'>wvar</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">alpha</span> <span class="argument">=</span> <span class="number">0.10</span><span class="keyword">)</span></div>
+<div class='output'>      Variance      Low CI   High CI
+2  0.452177820 0.334461347 0.6516656
+4  0.230339706 0.152096918 0.3978812
+8  0.137102522 0.077666345 0.3200430
+16 0.051603837 0.023732362 0.2119612
+32 0.011723825 0.004018555 0.1908247
+64 0.008205545 0.002136049 2.0867886
+</div>
+<div class='input'>
+<span class="comment"># IMU Object</span>
+<span class="comment">## Not run: ------------------------------------</span>
+<span class="comment"># if(!require("imudata")){</span>
+<span class="comment">#    install_imudata()</span>
+<span class="comment">#    library("imudata")</span>
+<span class="comment"># }</span>
+<span class="comment"># </span>
+<span class="comment"># data(imu6)</span>
+<span class="comment"># test = imu(imu6, gyros = 1:3, accels = 4:6, freq = 100)</span>
+<span class="comment"># df = wvar.imu(test)</span>
+<span class="comment">## ---------------------------------------------</span></div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>wvar</li><li>wvar.default</li><li>wvar.gts</li><li>wvar.imu</li><li>wvar.lts</li><li>wvar.ts</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+JJB
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

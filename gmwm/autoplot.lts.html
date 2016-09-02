@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>autoplot.lts. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Wenchao
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>autoplot.lts. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Wenchao
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Plot the Latent Time Series Graph</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="comment"># S3 method for lts</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/autoplot'>autoplot</a></span><span class="keyword">(</span><span class="symbol">object</span><span class="keyword">,</span> <span class="argument">to.unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">background</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"white"</span><span class="keyword">,</span>
+  <span class="argument">scales</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"free"</span><span class="keyword">,</span> <span class="argument">line.type</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">line.color</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">point.size</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">point.shape</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">title</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">title.size</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">15</span><span class="keyword">,</span>
+  <span class="argument">axis.label.size</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">13</span><span class="keyword">,</span> <span class="argument">axis.tick.size</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">11</span><span class="keyword">,</span> <span class="argument">axis.x.label</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">axis.y.label</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">facet.label.size</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">13</span><span class="keyword">,</span>
+  <span class="argument">facet.label.background</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"#003C7D33"</span><span class="keyword">,</span> <span class="argument">ncol</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1</span><span class="keyword">,</span> <span class="argument">nrow</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>object</dt>
+      <dd>A <code>lts</code> object</dd>
+      <dt>to.unit</dt>
+      <dd>A <code>string</code> indicating the unit which the data is converted to. The supported units are &quot;ns&quot;(nanosecond), &quot;ms&quot;(millisecond), &quot;sec&quot;, &quot;min&quot;, &quot;hour&quot;, &quot;day&quot;, &quot;month&quot;, and &quot;year&quot;.</dd>
+      <dt>background</dt>
+      <dd>A <code>string</code> that determines the graph background. It can be &quot;grey&quot; or &quot;white&quot;.</dd>
+      <dt>scales</dt>
+      <dd>Same as <code>scales</code> in <code>facet_wrap()</code> in <code>ggplot2</code> package: should scales be fixed (&quot;fixed&quot;), free (&quot;free&quot;), or free in one dimension (&quot;free_x&quot;, &quot;free_y&quot;). The default is &quot;free&quot; in this function.</dd>
+      <dt>line.type</dt>
+      <dd>A <code>vector</code> of <code>string</code> that indicates the type of lines.</dd>
+      <dt>line.color</dt>
+      <dd>A <code>vector</code> of <code>string</code> that indicates the color of lines.</dd>
+      <dt>point.size</dt>
+      <dd>A <code>vector</code> of <code>integer</code> that indicates the size of points on lines.</dd>
+      <dt>point.shape</dt>
+      <dd>A <code>vector</code> of <code>integer</code> that indicates the shape of points on lines.</dd>
+      <dt>title</dt>
+      <dd>A <code>string</code> that indicates the title of the graph.</dd>
+      <dt>title.size</dt>
+      <dd>An <code>integer</code> that indicates the size of title.</dd>
+      <dt>axis.label.size</dt>
+      <dd>An <code>integer</code> that indicates the size of label.</dd>
+      <dt>axis.tick.size</dt>
+      <dd>An <code>integer</code> that indicates the size of tick mark.</dd>
+      <dt>axis.x.label</dt>
+      <dd>A <code>string</code> that indicates the label on x axis.</dd>
+      <dt>axis.y.label</dt>
+      <dd>A <code>string</code> that indicates the label on y axis.</dd>
+      <dt>facet.label.size</dt>
+      <dd>An <code>integer</code> that indicates the size of facet label.</dd>
+      <dt>facet.label.background</dt>
+      <dd>A <code>string</code> that indicates the background color of the facet label.</dd>
+      <dt>ncol</dt>
+      <dd>An <code>integer</code> that indicates number of columns.</dd>
+      <dt>nrow</dt>
+      <dd>An <code>integer</code> that indicates number of rows.</dd>
+      <dt>...</dt>
+      <dd>other arguments passed to specific methods.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>ggplot2</code> panel containing the graph of latent time series.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Plots the graph of latent time series using <code>ggplot2</code></p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">model</span> <span class="assignement">=</span> <span class="functioncall"><a href='AR1.html'>AR1</a></span><span class="keyword">(</span><span class="argument">phi</span> <span class="argument">=</span> <span class="number">.99</span><span class="keyword">,</span> <span class="argument">sigma</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='WN.html'>WN</a></span><span class="keyword">(</span><span class="argument">sigma2</span><span class="argument">=</span><span class="number">1</span><span class="keyword">)</span>
+<span class="symbol">res</span> <span class="assignement">=</span> <span class="functioncall"><a href='gen.lts.html'>gen.lts</a></span><span class="keyword">(</span><span class="symbol">model</span><span class="keyword">,</span> <span class="argument">N</span> <span class="argument">=</span> <span class="number">100</span><span class="keyword">)</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/autoplot'>autoplot</a></span><span class="keyword">(</span><span class="symbol">res</span><span class="keyword">)</span></div>
+<p><img src='autoplot.lts-2.png' alt='' width='540' height='400' /></p>
+<div class='input'>
+<span class="comment"># Modify the graph aesthetics</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/ggplot2/topics/autoplot'>autoplot</a></span><span class="keyword">(</span><span class="symbol">res</span><span class="keyword">,</span> <span class="argument">line.color</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">'blue'</span><span class="keyword">,</span> <span class="string">'green'</span><span class="keyword">,</span> <span class="string">'black'</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">point.size</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">1</span><span class="keyword">,</span><span class="number">1</span><span class="keyword">,</span><span class="number">1</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<p><img src='autoplot.lts-4.png' alt='' width='540' height='400' /></p></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>autoplot.lts</li>
+    </ul>
+    <ul>
+      <li>internal</li>
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+Wenchao
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

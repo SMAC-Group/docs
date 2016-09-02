@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>print.ts.model. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+JJB
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>print.ts.model. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+JJB
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Multiple a ts.model by constant</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="comment"># S3 method for ts.model</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/print'>print</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>A <code>numeric</code> value</dd>
+      <dt>...</dt>
+      <dd>further arguments passed to or from other methods.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+An S3 object with called ts.model with the following structure:
+<ul>
+<li>desc
+ </li>
+<li>theta
+</li>
+</ul></p>
+
+      <p></dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Sets up the necessary backend for creating multiple model objects.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment"># Creates a parameter space for guessing</span>
+<span class="functioncall"><a href='QN.html'>QN</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='DR.html'>DR</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='WN.html'>WN</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='RW.html'>RW</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='AR1.html'>AR1</a></span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='ARMA.html'>ARMA</a></span><span class="keyword">(</span><span class="number">1</span><span class="keyword">,</span><span class="number">2</span><span class="keyword">)</span></div>
+<div class='output'>
+Guess Starting Values: TRUE 
+The program will attempt to guess starting values for...
+ [1] &quot;QN&quot;     &quot;DR&quot;     &quot;WN&quot;     &quot;RW&quot;     &quot;AR1&quot;    &quot;SIGMA2&quot; &quot;AR&quot;     &quot;MA&quot;    
+ [9] &quot;MA&quot;     &quot;SIGMA2&quot;
+To have the option of using your own starting values, please supply values for each parameter.
+</div>
+<div class='input'>
+<span class="comment"># Creates a user-specified starting value model</span>
+<span class="functioncall"><a href='AR1.html'>AR1</a></span><span class="keyword">(</span><span class="argument">phi</span> <span class="argument">=</span> <span class="number">.9</span><span class="keyword">,</span> <span class="argument">sigma2</span> <span class="argument">=</span> <span class="number">.1</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='WN.html'>WN</a></span><span class="keyword">(</span><span class="argument">sigma2</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">)</span></div>
+<div class='output'>
+Guess Starting Values: FALSE 
+  Terms Initial.Values
+    AR1            0.9
+ SIGMA2            0.1
+     WN            1.0
+The model will be initiated using the initial values you supplied.
+</div>
+<div class='input'>
+<span class="comment"># Similarly, with the addition of a generic ARMA</span>
+<span class="functioncall"><a href='RW.html'>RW</a></span><span class="keyword">(</span><span class="argument">gamma2</span> <span class="argument">=</span> <span class="number">.3</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='DR.html'>DR</a></span><span class="keyword">(</span><span class="argument">omega</span> <span class="argument">=</span> <span class="number">.5</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='QN.html'>QN</a></span><span class="keyword">(</span><span class="argument">q2</span> <span class="argument">=</span> <span class="number">.9</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='ARMA.html'>ARMA</a></span><span class="keyword">(</span><span class="argument">ar</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">.3</span><span class="keyword">,</span><span class="number">.1</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">ma</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">.3</span><span class="keyword">,</span><span class="number">.2</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">sigma2</span> <span class="argument">=</span> <span class="number">.99</span><span class="keyword">)</span></div>
+<div class='output'>
+Guess Starting Values: FALSE 
+  Terms Initial.Values
+     RW           0.30
+     DR           0.50
+     QN           0.90
+     AR           0.30
+     AR           0.10
+     MA           0.30
+     MA           0.20
+ SIGMA2           0.99
+The model will be initiated using the initial values you supplied.
+</div>
+<div class='input'>
+<span class="comment"># In a similar vein, this example highlights the lack of need for specifying parameters. </span>
+<span class="functioncall"><a href='AR1.html'>AR1</a></span><span class="keyword">(</span><span class="number">.9</span><span class="keyword">,</span><span class="number">.1</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='WN.html'>WN</a></span><span class="keyword">(</span><span class="number">1</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='RW.html'>RW</a></span><span class="keyword">(</span><span class="number">.3</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='DR.html'>DR</a></span><span class="keyword">(</span><span class="number">.5</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='QN.html'>QN</a></span><span class="keyword">(</span><span class="number">.9</span><span class="keyword">)</span> <span class="keyword">+</span> <span class="functioncall"><a href='ARMA.html'>ARMA</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">.3</span><span class="keyword">,</span><span class="number">.1</span><span class="keyword">)</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">.3</span><span class="keyword">,</span><span class="number">.2</span><span class="keyword">)</span><span class="keyword">,</span> <span class="number">.99</span><span class="keyword">)</span></div>
+<div class='output'>
+Guess Starting Values: FALSE 
+  Terms Initial.Values
+    AR1           0.90
+ SIGMA2           0.10
+     WN           1.00
+     RW           0.30
+     DR           0.50
+     QN           0.90
+     AR           0.30
+     AR           0.10
+     MA           0.30
+     MA           0.20
+ SIGMA2           0.99
+The model will be initiated using the initial values you supplied.
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>print.ts.model</li>
+    </ul>
+    <ul>
+      <li>internal</li>
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+JJB
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

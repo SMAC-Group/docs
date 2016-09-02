@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>gen_arma. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>gen_arma. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Generate Autoregressive Order $p$ - Moving Average Order $q$ (ARMA($p$,$q$)) Model</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='gen_arma.html'>gen_arma</a></span><span class="keyword">(</span><span class="symbol">N</span><span class="keyword">,</span> <span class="symbol">ar</span><span class="keyword">,</span> <span class="symbol">ma</span><span class="keyword">,</span> <span class="argument">sigma2</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1.5</span><span class="keyword">,</span> <span class="argument">n_start</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0L</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>N</dt>
+      <dd>An <code>integer</code> for signal length.</dd>
+      <dt>ar</dt>
+      <dd>A <code>vec</code> that contains the AR coefficients.</dd>
+      <dt>ma</dt>
+      <dd>A <code>vec</code> that contains the MA coefficients.</dd>
+      <dt>sigma2</dt>
+      <dd>A <code>double</code> that contains process variance.</dd>
+      <dt>n_start</dt>
+      <dd>An <code>unsigned int</code> that indicates the amount of observations to be used for the burn in period.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>vec</code> that contains the generated observations.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Generate an ARMA($p$,$q$) process with supplied vector of Autoregressive Coefficients ($\phi$), Moving Average Coefficients ($\theta$), and $\sigma^2$.</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>For <code><a href='gen_ar1.html'>AR(1)</a></code>, <code><a href='gen_ma1.html'>MA(1)</a></code>, and <code><a href='gen_arma11.html'>ARMA(1,1)</a></code> please use their functions if speed is important
+as this function is designed to generate generic ARMA processes.</p>
+
+    </div>
+
+    <div class="Process Definition">
+      <h2>Process Definition</h2>
+
+      <p></p>
+
+      <p>The Autoregressive order $p$ and Moving Average order $q$ (ARMA($p$,$q$)) process with non-zero parameters $phi[i] in (-1,1)$ for the AR components,
+ $theta[j] in (-1,+1)$ for the MA components, and $sigma^2 in R^{+}$.
+This process is defined as:</p>
+
+      <p>$${X_t} = \sum\limits_{i = 1}^p {{\phi _i}{X_{t - i}}}  + \sum\limits_{i = 1}^q {{\theta _i}{\varepsilon _{t - i}}}  + {\varepsilon _t}$$  
+ where
+  $${\varepsilon_t}\mathop  \sim \limits^{iid} N\left( {0,\sigma^2} \right)$$</p>
+
+    </div>
+
+    <div class="Generation Algorithm">
+      <h2>Generation Algorithm</h2>
+
+      <p></p>
+
+      <p>The innovations are generated from a normal distribution.
+The $\sigma^2$ parameter is indeed a variance parameter. 
+This differs from R&#39;s use of the standard deviation, $\sigma$.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='gen_arma.html'>gen_arma</a></span><span class="keyword">(</span><span class="number">10</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">.3</span><span class="keyword">,</span><span class="number">.5</span><span class="keyword">)</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">.1</span><span class="keyword">)</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">,</span> <span class="number">0</span><span class="keyword">)</span></div>
+<div class='output'>           [,1]
+ [1,] 2.0567729
+ [2,] 1.9164544
+ [3,] 1.0638526
+ [4,] 1.3836825
+ [5,] 1.2956966
+ [6,] 1.3460503
+ [7,] 0.8289425
+ [8,] 0.8546455
+ [9,] 0.4448576
+[10,] 1.7887429
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>gen_arma</li>
+    </ul>
+    <ul>
+      <li>internal</li>
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

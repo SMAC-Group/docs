@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>plot.gts. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Wenchao
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>plot.gts. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Wenchao
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Plot Time Series Data</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="comment"># S3 method for gts</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">to.unit</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">background</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"white"</span><span class="keyword">,</span>
+  <span class="argument">line.type</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"solid"</span><span class="keyword">,</span> <span class="argument">line.color</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"#003C7D"</span><span class="keyword">,</span> <span class="argument">point.size</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0</span><span class="keyword">,</span>
+  <span class="argument">point.shape</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">20</span><span class="keyword">,</span> <span class="argument">title</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">title.size</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">15</span><span class="keyword">,</span> <span class="argument">axis.label.size</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">13</span><span class="keyword">,</span>
+  <span class="argument">axis.tick.size</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">11</span><span class="keyword">,</span> <span class="argument">axis.x.label</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">axis.y.label</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>A <code>gts</code> object</dd>
+      <dt>to.unit</dt>
+      <dd>A <code>string</code> indicating the unit which the data is converted to. The supported units are &quot;ns&quot;(nanosecond), &quot;ms&quot;(millisecond), &quot;sec&quot;, &quot;min&quot;, &quot;hour&quot;, &quot;day&quot;, &quot;month&quot;, and &quot;year&quot;.</dd>
+      <dt>background</dt>
+      <dd>A <code>string</code> that determines the graph background. It can be <code>&#39;grey&#39;</code> or <code>&#39;white&#39;</code>.</dd>
+      <dt>line.type</dt>
+      <dd>A <code>string</code> that indicates the type of lines.</dd>
+      <dt>line.color</dt>
+      <dd>A <code>string</code> that indicates the color of lines.</dd>
+      <dt>point.size</dt>
+      <dd>An <code>integer</code> that indicates the size of points on lines.</dd>
+      <dt>point.shape</dt>
+      <dd>An <code>integer</code> that indicates the shape of points on lines.</dd>
+      <dt>title</dt>
+      <dd>A <code>string</code> that indicates the title of the graph.</dd>
+      <dt>title.size</dt>
+      <dd>An <code>integer</code> that indicates the size of title.</dd>
+      <dt>axis.label.size</dt>
+      <dd>An <code>integer</code> that indicates the size of label.</dd>
+      <dt>axis.tick.size</dt>
+      <dd>An <code>integer</code> that indicates the size of tick mark.</dd>
+      <dt>axis.x.label</dt>
+      <dd>A <code>string</code> that indicates the label on x axis.</dd>
+      <dt>axis.y.label</dt>
+      <dd>A <code>string</code> that indicates the label on y axis.</dd>
+      <dt>...</dt>
+      <dd>other arguments passed to specific methods</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A ggplot2 panel containing the graph of time series.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>This function is implemented with ggplot2.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="symbol">x</span> <span class="assignement">=</span> <span class="functioncall"><a href='gen.gts.html'>gen.gts</a></span><span class="keyword">(</span><span class="functioncall"><a href='WN.html'>WN</a></span><span class="keyword">(</span><span class="argument">sigma2</span><span class="argument">=</span><span class="number">1</span><span class="keyword">)</span><span class="keyword">,</span> <span class="number">50</span><span class="keyword">,</span> <span class="argument">unit</span> <span class="argument">=</span> <span class="string">'sec'</span><span class="keyword">,</span> <span class="argument">freq</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">)</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span></div>
+<p><img src='plot.gts-2.png' alt='' width='540' height='400' /></p>
+<div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">to.unit</span> <span class="argument">=</span> <span class="string">'ns'</span><span class="keyword">,</span> <span class="argument">line.type</span> <span class="argument">=</span> <span class="string">'dashed'</span><span class="keyword">,</span> <span class="argument">line.color</span> <span class="argument">=</span> <span class="string">'black'</span><span class="keyword">,</span> <span class="argument">point.size</span> <span class="argument">=</span> <span class="number">2</span><span class="keyword">)</span></div>
+<strong class='message'>Unit of object is converted from sec to ns</strong>
+<p><img src='plot.gts-5.png' alt='' width='540' height='400' /></p></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>plot.gts</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+Wenchao
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

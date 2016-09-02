@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>deriv_arma11. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+James Joseph Balamuta (JJB)
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>deriv_arma11. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+James Joseph Balamuta (JJB)
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Analytic D matrix for ARMA(1,1) process</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='deriv_arma11.html'>deriv_arma11</a></span><span class="keyword">(</span><span class="symbol">phi</span><span class="keyword">,</span> <span class="symbol">theta</span><span class="keyword">,</span> <span class="symbol">sigma2</span><span class="keyword">,</span> <span class="symbol">tau</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>phi</dt>
+      <dd>A <code>double</code> corresponding to the phi coefficient of an ARMA(1,1) process.</dd>
+      <dt>theta</dt>
+      <dd>A <code>double</code> corresponding to the theta coefficient of an ARMA(1,1) process.</dd>
+      <dt>sigma2</dt>
+      <dd>A <code>double</code> corresponding to the error term of an ARMA(1,1) process.</dd>
+      <dt>tau</dt>
+      <dd>A <code>vec</code> containing the scales e.g. $2^tau$</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>matrix</code> with:
+<ul>
+<li> The <strong>first</strong> column containing the partial derivative with respect to $phi$;
+</li>
+<li> The <strong>second</strong> column containing the partial derivative with respect to $theta$;
+</li>
+<li> The <strong>third</strong> column contains the partial derivative with respect to $sigma^2$.
+</li>
+</ul></p>
+
+      <p></dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Obtain the first derivative of the ARMA(1,1) process.</p>
+
+    </div>
+
+    <div class="Process Haar WV First Derivative">
+      <h2>Process Haar WV First Derivative</h2>
+
+      <p></p>
+
+      <p>Taking the derivative with respect to $phi$ yields:
+$$ \frac{\partial }{{\partial \phi }}\nu _j^2\left( {\phi ,\theta ,{\sigma ^2}} \right) = \frac{{2{\sigma ^2}}}{{{{(\phi  - 1)}^4}{{(\phi  + 1)}^2}\tau _j^2}}\left( \begin{array}{cc}
+&amp;{\tau _j}\left( { - {{(\theta  + 1)}^2}(\phi  - 1){{(\phi  + 1)}^2} - 2\left( {{\phi ^2} - 1} \right)(\theta  + \phi )(\theta \phi  + 1){\phi ^{\frac{{{\tau _j}}}{2} - 1}} + \left( {{\phi ^2} - 1} \right)(\theta \phi  + 1)(\theta  + \phi ){\phi ^{{\tau _j} - 1}}} \right) \\
+&amp;- \left( {{\theta ^2}((3\phi  + 2)\phi  + 1) + 2\theta \left( {\left( {{\phi ^2} + \phi  + 3} \right)\phi  + 1} \right) + (3\phi  + 2)\phi  + 1} \right)\left( {{\phi ^{{\tau _j}}} - 4{\phi ^{\frac{{{\tau _j}}}{2}}} + 3} \right) \\ 
+\end{array}  \right)$$</p>
+
+      <p>Taking the derivative with respect to $theta$ yields:
+$$\frac{\partial }{{\partial \theta }}\nu _j^2\left( {\phi ,\theta ,{\sigma ^2}} \right) = \frac{{2{\sigma ^2}\left( {(\theta  + 1)\left( {{\phi ^2} - 1} \right){\tau _j} + \left( {2\theta \phi  + {\phi ^2} + 1} \right)\left( {{\phi ^{{\tau _j}}} - 4{\phi ^{\frac{{{\tau _j}}}{2}}} + 3} \right)} \right)}}{{{{(\phi  - 1)}^3}(\phi  + 1)\tau _j^2}}$$</p>
+
+      <p>Taking the derivative with respect to $sigma^2$ yields:
+$$\frac{\partial }{{\partial \sigma ^2 }}\nu _j^2\left( {\phi ,\theta ,{\sigma ^2}} \right) = \frac{2 \sigma ^2 \left(\left(\phi ^2-1\right) \tau _j+2 \phi  \left(\phi ^{\tau _j}-4 \phi ^{\frac{\tau _j}{2}}+3\right)\right)}{(\phi -1)^3 (\phi +1) \tau _j^2}$$</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='deriv_arma11.html'>deriv_arma11</a></span><span class="keyword">(</span><span class="number">.3</span><span class="keyword">,</span> <span class="number">.4</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">^</span><span class="keyword">(</span><span class="number">1</span><span class="keyword">:</span><span class="number">5</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>           [,1]       [,2]      [,3]
+[1,] -0.1065089 0.03846154 0.3384615
+[2,]  0.2750000 0.44125000 0.4180000
+[3,]  0.5876429 0.43766853 0.3369415
+[4,]  0.4959038 0.28724120 0.2087948
+[5,]  0.3025186 0.16109449 0.1146978
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>deriv_arma11</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+James Joseph Balamuta (JJB)
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

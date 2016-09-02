@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>create_wvar. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>create_wvar. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Create a Wvar object</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='create_wvar.html'>create_wvar</a></span><span class="keyword">(</span><span class="symbol">obj</span><span class="keyword">,</span> <span class="symbol">decomp</span><span class="keyword">,</span> <span class="symbol">filter</span><span class="keyword">,</span> <span class="symbol">robust</span><span class="keyword">,</span> <span class="symbol">eff</span><span class="keyword">,</span> <span class="symbol">alpha</span><span class="keyword">,</span> <span class="symbol">scales</span><span class="keyword">,</span> <span class="symbol">unit</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>obj</dt>
+      <dd>A <code>matrix</code> with dimensions N x 3, that contains the wavelet variance, low ci, hi ci.</dd>
+      <dt>decomp</dt>
+      <dd>A <code>string</code> that indicates whether to use the &quot;dwt&quot; or &quot;modwt&quot; decomposition</dd>
+      <dt>filter</dt>
+      <dd>A <code>string</code> that specifies the type of wavelet filter used in the decomposition</dd>
+      <dt>robust</dt>
+      <dd>A <code>boolean</code> that triggers the use of the robust estimate.</dd>
+      <dt>eff</dt>
+      <dd>A <code>double</code> that indicates the efficiency as it relates to an MLE.</dd>
+      <dt>alpha</dt>
+      <dd>A <code>double</code> that indicates the $(1-p)*alpha$ confidence level</dd>
+      <dt>scales</dt>
+      <dd>A <code>vec</code> that contains the amount of decomposition done at each level.</dd>
+      <dt>unit</dt>
+      <dd>A <code>string</code> that contains the unit expression of the frequency.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>list</code> with the structure:
+<dl>
+  <dt>&quot;variance&quot;</dt><dd>Wavelet Variance</dd></p>
+
+      <p><dt>&quot;ci_low&quot;</dt><dd>Lower CI</dd></p>
+
+      <p><dt>&quot;ci_high&quot;</dt><dd>Upper CI</dd></p>
+
+      <p><dt>&quot;robust&quot;</dt><dd>Robust active</dd></p>
+
+      <p><dt>&quot;eff&quot;</dt><dd>Efficiency level for Robust</dd></p>
+
+      <p><dt>&quot;alpha&quot;</dt><dd>p value used for CI</dd></p>
+
+      <p><dt>&quot;unit&quot;</dt><dd>String representation of the unit</dd></p>
+
+      <p></dl></p>
+
+      <p></dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Structures elements into a WVar object</p>
+
+    </div>
+      </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>create_wvar</li>
+    </ul>
+    <ul>
+      <li>internal</li>
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

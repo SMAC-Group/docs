@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>rank.models. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>rank.models. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Automatically select appropriate model for a set of models</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='rank.models.html'>rank.models</a></span><span class="keyword">(</span><span class="symbol">...</span><span class="keyword">,</span> <span class="argument">data</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">nested</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">F</span><span class="keyword">,</span> <span class="argument">bootstrap</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">F</span><span class="keyword">,</span>
+  <span class="argument">model.type</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"ssm"</span><span class="keyword">,</span> <span class="argument">alpha</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.05</span><span class="keyword">,</span> <span class="argument">robust</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">F</span><span class="keyword">,</span> <span class="argument">eff</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">0.6</span><span class="keyword">,</span> <span class="argument">B</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">50</span><span class="keyword">,</span>
+  <span class="argument">G</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1e+06</span><span class="keyword">,</span> <span class="argument">freq</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1</span><span class="keyword">,</span> <span class="argument">seed</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1337</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>...</dt>
+      <dd>Different <code>ts.model</code>s to be compared.</dd>
+      <dt>data</dt>
+      <dd>A <code>vector</code>, <code>data.frame</code>, <code>matrix</code>, or <code>gts</code> object with 1 column.</dd>
+      <dt>nested</dt>
+      <dd>A <code>bool</code> that indicates whether the ts.model objects are nested within a large object given within the list. If not, the a full model will be created.</dd>
+      <dt>bootstrap</dt>
+      <dd>A <code>bool</code> that is either true or false to indicate whether we use bootstrap or asymptotic By default, we use asymptotic.</dd>
+      <dt>model.type</dt>
+      <dd>A <code>string</code> indicating whether the model should be a <code>&quot;ssm&quot;</code> or <code>&quot;imu&quot;</code>.</dd>
+      <dt>alpha</dt>
+      <dd>A <code>double</code> that indicates the level of confidence for the WV CI.</dd>
+      <dt>robust</dt>
+      <dd>A <code>boolean</code> that indicates whether to use robust estimation.</dd>
+      <dt>eff</dt>
+      <dd>A <code>double</code> between 0 and 1 that indicates the efficiency for the robust estimation.</dd>
+      <dt>B</dt>
+      <dd>A <code>integer</code> that contains the amount of bootstrap replications</dd>
+      <dt>G</dt>
+      <dd>A <code>integer</code> that indicates the amount of guesses for caliberating the startup.</dd>
+      <dt>freq</dt>
+      <dd>A <code>double</code> that represents the frequency between observations.</dd>
+      <dt>seed</dt>
+      <dd>A <code>integer</code> that is used to set a seed for reproducibility.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+A <code>rank.models</code> object.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Runs through a model selection algorithm to determine the best model in a given set</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>The models MUST be nested within each other. 
+If the models are not nested, the algorithm creates the &quot;common denominator&quot; model.</p>
+
+      <p>To supply the models, enter them as:
+AR1()+WN(), AR1(), 3*AR1()</p>
+
+      <p>Any parameter that you wish to use must then be specified.
+e.g. to specify nested, you must use nested = T. Otherwise, it the function will stop.</p>
+
+      <p>Due to the structure of <code>rank.models</code>, you cannot mix and match <code>AR1()</code> and <code>GM()</code> objects.
+So you must enter either AR1() or GM() objects.</p>
+
+    </div>
+      </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>rank.models</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

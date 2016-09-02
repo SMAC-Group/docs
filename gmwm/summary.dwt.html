@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>summary.dwt. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+JJB
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">gmwm 2.9.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+      <meta charset="utf-8">
+<title>summary.dwt. gmwm 2.9.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+JJB
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71142600-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+      </header>
+      
+      <h1>Summary Discrete Wavelet Transform</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="comment"># S3 method for dwt</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span><span class="keyword">(</span><span class="symbol">object</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>object</dt>
+      <dd>A <code>dwt</code> object</dd>
+      <dt>...</dt>
+      <dd>additional arguments affecting the summary produced.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+Prints the dwt matrix decomposition
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Unlists DWT object and places it in matrix form</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span><span class="keyword">(</span><span class="number">999</span><span class="keyword">)</span>
+<span class="symbol">x</span> <span class="assignement">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/stats/topics/Normal'>rnorm</a></span><span class="keyword">(</span><span class="number">2</span><span class="keyword">^</span><span class="number">8</span><span class="keyword">)</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span><span class="keyword">(</span><span class="functioncall"><a href='dwt.html'>dwt</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>Results of the DWT containing  8  scales
+These values are  brick walled
+[[1]]
+              [,1]
+  [1,] -0.72889944
+  [2,] -0.37131131
+  [3,] -0.20415397
+  [4,]  0.43265539
+  [5,] -0.10837096
+  [6,] -0.84250806
+  [7,] -0.54179324
+  [8,] -1.64072581
+  [9,]  0.02285547
+ [10,] -2.10413896
+ [11,]  1.32342644
+ [12,]  0.46230535
+ [13,]  1.24983538
+ [14,]  0.15690501
+ [15,]  1.00933564
+ [16,] -1.25963157
+ [17,]  0.63722357
+ [18,] -1.32011525
+ [19,]  0.63172585
+ [20,] -1.35786876
+ [21,]  0.34940611
+ [22,]  0.12058606
+ [23,] -0.01710248
+ [24,]  1.46022349
+ [25,] -0.43627984
+ [26,] -0.37357720
+ [27,] -0.97461739
+ [28,]  0.24707894
+ [29,] -1.30596334
+ [30,] -0.70772182
+ [31,]  1.47662660
+ [32,]  0.04367069
+ [33,] -0.79788706
+ [34,]  0.79609673
+ [35,]  1.00015554
+ [36,]  0.02608066
+ [37,] -0.96607326
+ [38,] -0.64467560
+ [39,] -1.84077241
+ [40,] -0.42190116
+ [41,]  1.15132631
+ [42,]  0.92899547
+ [43,]  0.58495131
+ [44,] -1.14306027
+ [45,] -0.40258476
+ [46,] -1.15318737
+ [47,]  1.59979283
+ [48,]  1.53894673
+ [49,]  0.20091584
+ [50,]  0.32648835
+ [51,]  1.50554057
+ [52,]  0.08906212
+ [53,] -2.97184942
+ [54,]  0.77322954
+ [55,]  0.58884720
+ [56,] -0.86348183
+ [57,]  0.05370806
+ [58,] -0.60378636
+ [59,]  0.12936434
+ [60,]  1.22773122
+ [61,]  0.41219599
+ [62,]  0.25353792
+ [63,] -0.74015323
+ [64,] -0.05055111
+ [65,] -0.59724831
+ [66,]  0.19752204
+ [67,] -0.53275161
+ [68,]  0.97034397
+ [69,]  0.30587516
+ [70,]  1.40220957
+ [71,]  1.03885172
+ [72,]  0.68989586
+ [73,] -0.77966154
+ [74,] -0.70217212
+ [75,]  1.29530962
+ [76,]  0.29324058
+ [77,]  0.46405241
+ [78,] -0.70261399
+ [79,]  1.16568499
+ [80,] -1.40977757
+ [81,] -0.02221320
+ [82,]  0.33090141
+ [83,]  1.56189296
+ [84,] -0.39505945
+ [85,]  0.37902072
+ [86,]  0.22168756
+ [87,] -0.01428200
+ [88,] -0.12941656
+ [89,]  1.24191202
+ [90,]  0.98175311
+ [91,]  0.81958759
+ [92,] -0.09460804
+ [93,]  0.64496580
+ [94,]  1.24957148
+ [95,] -0.47381096
+ [96,]  0.91306617
+ [97,]  0.01955213
+ [98,]  1.00028046
+ [99,] -0.97536651
+[100,]  0.62647711
+[101,]  2.12375673
+[102,]  0.04716831
+[103,] -0.10992377
+[104,] -0.57689365
+[105,] -0.78839816
+[106,] -1.26565972
+[107,] -1.53256423
+[108,]  1.80448854
+[109,]  1.03217243
+[110,]  0.79707617
+[111,] -1.32040992
+[112,]  0.29826872
+[113,] -2.30716377
+[114,] -0.02696702
+[115,]  1.54559061
+[116,] -0.55180823
+[117,] -0.15991405
+[118,]  1.60263284
+[119,]  0.91433732
+[120,] -0.28951691
+[121,]  1.05502193
+[122,]  0.35909443
+[123,] -1.33492429
+[124,]  0.44657129
+[125,] -1.26006188
+[126,]  0.12279219
+[127,]  0.01696589
+[128,] -1.41544144
+
+[[2]]
+              [,1]
+ [1,]  1.329777133
+ [2,] -1.151059620
+ [3,]  1.774100074
+ [4,] -0.758161673
+ [5,] -0.671002566
+ [6,]  0.259895828
+ [7,] -0.754287567
+ [8,]  2.332357194
+ [9,] -1.810220923
+[10,] -0.518522830
+[11,] -0.958276770
+[12,] -1.306915851
+[13,] -0.654593163
+[14,] -0.947351767
+[15,]  0.290694274
+[16,]  0.952127199
+[17,] -0.262487809
+[18,] -0.377290716
+[19,]  0.251561771
+[20,]  0.901303082
+[21,] -0.742862242
+[22,]  1.345853709
+[23,]  0.121292257
+[24,] -0.194046724
+[25,]  0.424948947
+[26,] -0.155928709
+[27,]  1.330980127
+[28,]  0.185130911
+[29,]  0.229767111
+[30,] -1.447028196
+[31,] -1.768213573
+[32,] -0.472644422
+[33,] -0.952613918
+[34,] -0.008200899
+[35,]  1.185648182
+[36,] -0.280000455
+[37,]  0.628506609
+[38,]  1.109623080
+[39,] -0.033366196
+[40,] -0.238271629
+[41,] -0.776304340
+[42,]  1.223215769
+[43,] -0.064054575
+[44,] -0.282642489
+[45,] -0.046992006
+[46,]  0.863502072
+[47,] -0.931591643
+[48,]  0.100813049
+[49,] -0.048956362
+[50,] -0.076354067
+[51,]  0.415991446
+[52,] -1.120612832
+[53,]  0.841364712
+[54,]  0.137473454
+[55,]  0.309167512
+[56,] -0.449980244
+[57,]  2.048934543
+[58,]  0.352962595
+[59,] -0.941067161
+[60,] -1.240718912
+[61,]  1.825099334
+[62,]  0.689982576
+[63,]  2.021738123
+[64,]  0.786487223
+
+[[3]]
+             [,1]
+ [1,] -1.22320077
+ [2,]  0.47219519
+ [3,]  0.12472418
+ [4,]  1.33563524
+ [5,]  0.13021065
+ [6,]  0.49896549
+ [7,]  0.89817225
+ [8,]  1.14169199
+ [9,]  1.15231763
+[10,] -0.99689907
+[11,]  0.11695443
+[12,] -1.02811101
+[13,] -0.62360149
+[14,] -1.65820072
+[15,]  1.51601253
+[16,]  2.15880930
+[17,] -0.35541255
+[18,]  1.48724762
+[19,]  0.52009513
+[20,]  0.17094179
+[21,]  1.24491909
+[22,]  0.69896585
+[23,]  1.12782250
+[24,]  0.92224957
+[25,] -0.20525884
+[26,]  0.07672062
+[27,] -1.38794899
+[28,] -0.17499612
+[29,] -0.26543147
+[30,] -1.72630404
+[31,] -1.13314393
+[32,] -0.98655836
+
+[[4]]
+             [,1]
+ [1,]  1.14868967
+ [2,]  0.12096280
+ [3,] -0.62433814
+ [4,] -0.14157892
+ [5,]  0.69302480
+ [6,]  1.15573426
+ [7,]  0.05803346
+ [8,] -0.15074020
+ [9,] -0.05134474
+[10,]  0.02464744
+[11,] -0.55696359
+[12,] -0.16475040
+[13,]  1.04468161
+[14,] -0.24607875
+[15,] -1.74839343
+[16,] -3.40037107
+
+[[5]]
+           [,1]
+[1,]  0.2853548
+[2,]  1.7362096
+[3,]  0.7449743
+[4,]  0.4771237
+[5,]  1.2361382
+[6,] -0.2320687
+[7,] -0.8252494
+[8,] -0.3015504
+
+[[6]]
+            [,1]
+[1,]  0.59528321
+[2,] -1.37343346
+[3,] -1.32761684
+[4,]  0.08159036
+
+[[7]]
+           [,1]
+[1,] -0.1167127
+[2,] -1.2879482
+
+[[8]]
+     [,1]
+
+attr(,&quot;J&quot;)
+[1] 8
+attr(,&quot;filter&quot;)
+[1] &quot;haar&quot;
+attr(,&quot;boundary&quot;)
+[1] &quot;periodic&quot;
+attr(,&quot;brick.wall&quot;)
+[1] TRUE
+attr(,&quot;class&quot;)
+[1] &quot;dwt&quot;  &quot;list&quot;
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>summary.dwt</li>
+    </ul>
+    <ul>
+      <li>internal</li>
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+JJB
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
